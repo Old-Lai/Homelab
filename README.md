@@ -51,11 +51,19 @@ Welcome to my homelab repository! This is a showcase of my personal lab environm
 - **NGINX acts as a single entry point**, exposing only required ports (80/443) to the internet, keeping all other services isolated.  
 - External traffic is securely routed to the correct LXC container or VM internally.  
 ```mermaid
-flowchart LR
-    Internet -->|HTTPS/SSH| NGINX(LXC)
-    NGINX --> Emby(LXC)
-    NGINX --> CodeServer(LXC)
-    NGINX --> GameServer(LXC)
-    NGINX --> Immich(LXC)
-    NGINX --> HomeAssistant(VM)
+flowchart TD
+    Internet e1@==>|DNS| Cloudflare(cloudflare)
+    Cloudflare e7@==>|HTTPS/SSH| NGINX
+    NGINX e2@--> Emby(Emby)
+    NGINX e3@--> CodeServer(Code Server)
+    NGINX e4@--> GameServer(Game Server)
+    NGINX e5@--> Immich(Immich)
+    NGINX e6@--> HomeAssistant(Home Assistant)
+    e1@{ animation: fast }
+    e2@{ animation: slow }
+    e3@{ animation: slow }
+    e4@{ animation: slow }
+    e5@{ animation: slow }
+    e6@{ animation: slow }
+    e7@{ animation: fast }
 ```
