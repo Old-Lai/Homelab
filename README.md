@@ -51,7 +51,8 @@ Welcome to my homelab repository! This is a showcase of my personal lab environm
 - **NGINX acts as a single entry point**, exposing only required ports (80/443) to the internet, keeping all other services isolated.  
 - External traffic is securely routed to the correct LXC container or VM internally.  
 ```mermaid
-Internet -->|HTTPS/SSH| NGINX(LXC)
+flowchart LR
+    Internet -->|HTTPS/SSH| NGINX(LXC)
     NGINX --> Emby(LXC)
     NGINX --> CodeServer(LXC)
     NGINX --> GameServer(LXC)
